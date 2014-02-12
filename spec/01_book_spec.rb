@@ -42,7 +42,8 @@ describe 'Book' do
     it 'keeps track of all genres' do
       genres = ["Thriller", "Science Fiction", "Romance"]
       genres.each_with_index do |genre, i|
-        Book.new("Book_#{i}")
+        book = Book.new("Book_#{i}")
+        book.genre = genre
       end
 
       genres.each do |genre|
