@@ -10,6 +10,11 @@ describe 'Shoe' do
   context 'properties' do
     let(:shoe) { Shoe.new("Nike") }
 
+    it 'has a brand' do
+      # When must the brand be assigned for this to work?
+      expect(shoe.brand).to eq("Nike")
+    end
+
     it 'has a color' do
       shoe.color = "red"
       expect(shoe.color).to eq("red")
@@ -62,7 +67,7 @@ describe 'Shoe' do
     end
 
     it 'only keeps track of unique brands' do
-      Shoe::Brands = []
+      Shoe::BRANDS.clear
       brands = ["Uggs", "Rainbow", "Nike", "Nike"]
       brands.each do |brand|
         Shoe.new(brand)
