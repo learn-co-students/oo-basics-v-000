@@ -1,6 +1,6 @@
 ---
-tags: oop, tutorial, basics
-languages: ruby
+  tags: oop, tutorial, basics
+  languages: ruby
   resources: 2
 ---
 
@@ -862,6 +862,7 @@ Open `spec/02_shoe_spec.rb` and start making the tests pass. Write your code in 
 To run the specs, type `rspec spec/02_shoe_spec.rb` on your command line.
 
 Happy coding!
+
 ## Resources
 * [Practical Object-Oriented Design in Ruby](http://books.flatironschool.com/books/102) - [Chapter 1: Object-Oriented Design](http://books.flatironschool.com/books/102), page 26
 * [Practical Object-Oriented Design in Ruby](http://books.flatironschool.com/books/102) - [Chapter 2: Designing Classes with a Single Responsibility 15](http://books.flatironschool.com/books/102), page 40
