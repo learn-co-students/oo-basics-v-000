@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'Shoe' do
   describe '::new' do
     it 'gets initialized with a brand' do

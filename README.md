@@ -15,8 +15,7 @@ a similar object oriented problem on your own.
 ## Instructions
 
 1. Read through the tutorial, following along as you go.
-2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only
-those tests by typing `rspec spec/02_shoe_spec.rb` on your command line.
+2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only those tests by typing `rspec spec/02_shoe_spec.rb` on your command line.
 
 ## Tutorial
 
