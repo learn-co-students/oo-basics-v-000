@@ -520,10 +520,10 @@ something to the screen. So, to make the test pass, let's add a `puts` statement
 to our `turn_page` method:
 
 ```ruby
+
 # book.rb
 
 class Book
-
   def initialize(title)
     @title = title
   end
