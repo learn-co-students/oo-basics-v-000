@@ -15,7 +15,7 @@ a similar object oriented problem on your own.
 ## Instructions
 
 1. Read through the tutorial, following along as you go.
-2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only those tests by typing `rspec spec/02_shoe_spec.rb` on your command line.
+2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only those tests by typing `learn spec/02_shoe_spec.rb` on your command line.
 
 ## Tutorial
 
@@ -39,7 +39,7 @@ Whenever the tutorial says to 'run the specs', you should type the following int
 command line:
 
 ```bash
-rspec spec/01_book_spec.rb
+learn spec/01_book_spec.rb
 ```
 
 This will run only the tests that we are interested in completing for this tutorial.
@@ -440,7 +440,7 @@ class Book
 end
 ```
 
-Run RSpec now, and we get the following:
+Run Learn now, and we get the following:
 
 ```bash
 1) Book #turn_page can turn the page
@@ -858,7 +858,7 @@ own.
 
 Open `spec/02_shoe_spec.rb` and start making the tests pass. Write your code in `shoe.rb`.
 
-To run the specs, type `rspec spec/02_shoe_spec.rb` on your command line.
+To run the specs, type `learn spec/02_shoe_spec.rb` on your command line.
 
 Happy coding!
 
