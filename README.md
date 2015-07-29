@@ -1,8 +1,4 @@
----
-  tags: oop, tutorial, basics
-  languages: ruby
-  resources: 2
----
+
 
 # Object Orientation Basics
 
