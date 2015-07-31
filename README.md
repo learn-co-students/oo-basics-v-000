@@ -1,29 +1,25 @@
+# Code Along: Object Orientation Basics
 
 
-# Object Orientation Basics
+This lab will walk you, step by step, through the basics of programming a simple `Book` class. Once you've completed the tutorial, you should know enough to complete a similar object oriented problem on your own.
 
-## Description
+## Objectives
 
-This lab will walk you, step by step, through the basics of programming a simple
-`Book` class. Once you've completed the tutorial, you should know enough to complete
-a similar object oriented problem on your own.
+1. Use TDD (test-driven-development) to build a program. Gain practice reading and understanding test output and test files and use tests to guide you to build out the functionality of a program.
+2. Practice building classes and instance and class methods. 
+3. Review and implement the basic concepts of object orientation that we've covered so far. 
 
 ## Instructions
 
 1. Read through the tutorial, following along as you go.
 2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only those tests by typing `learn spec/02_shoe_spec.rb` on your command line.
 
-## Tutorial
 
-Object oriented programming, or OOP, is an extremely useful programming paradigm in which
-we can organize our code according to how real-world objects might interact with one another.
-We can wrap properties/data and behavior up in classes, and then create instances,
-or individual "members", of those classes that can interact with one another.
+## Code Along Exercise
 
-In this tutorial, our goal is to create a simple `Book` class. We'll want it to have properties
-like a title, an author, a page count, etc. We'd also like the class to somehow be able to
-keep track of all of the genres of all of the Books we create. Finally, we'll give our
-books the total non-sensical ability to turn their own pages.
+Object oriented programming, or OOP, is an extremely useful programming paradigm in which we can organize our code according to how real-world objects might interact with one another. We can wrap properties/data and behavior up in classes, and then create instances, or individual "members", of those classes that can interact with one another.
+
+In this tutorial, our goal is to create a simple `Book` class. We'll want it to have properties like a title, an author, a page count, etc. We'd also like the class to somehow be able to keep track of all of the genres of all of the Books we create. Finally, we'll give our books the totally non-sensical ability to turn their own pages.
 
 ### Set Up
 
@@ -44,8 +40,7 @@ Ready?
 
 ### Running the Tests
 
-Let's run the tests for the first time, and see what our first failure is. The output in your
-terminal should be something similar to:
+Let's run the tests for the first time, and see what our first failure is. The output in your terminal should be something similar to:
 
 ```bash
 Failures:
@@ -58,8 +53,9 @@ Failures:
      # ./spec/01_book_spec.rb:6:in `block (3 levels) in <top (required)>'
 ```
 
-This looks kind of crazy, but the phrase `uninitialized constant Book` holds the answer:
-we need to define our Book class!
+This looks kind of crazy, but the phrase `uninitialized constant Book` holds the answer: we need to define our Book class!
+
+**Top Tip:** You can run your tests, up until the first failure, using the `rspec --fail-fast` command. This delivers some testing output in more manageable chunks. 
 
 ### Defining the Book Class
 
@@ -121,9 +117,7 @@ class Book
 end
 ```
 
-We'll figure out what we need to do with `title` in just a minute, but for know, all
-we should remember is that the `initialize` method is a place that we'll probably
-be doing some setup in. Cool?
+We'll figure out what we need to do with `title` in just a minute.
 
 Let's run those tests again:
 
@@ -139,8 +133,7 @@ Hey, look! That test passed, and we're on to a different one!
 
 ### Giving a Book a Title
 
-It looks like we don't have a method `title` for our book. We know how to fix this error...
-we're just writing Ruby, after all. Let's write a `title` method in our `Book` class:
+It looks like we don't have a method `title` for our book. We know how to fix this error. Let's write a `title` method in our `Book` class:
 
 ```ruby
 # book.rb
@@ -170,22 +163,22 @@ And if we run the specs again, we see this output:
 ```
 
 So, it seems like, if I'm reading the test correctly, we are initializing a book with
-"And Then There Were None" as an argument, and then magically, when we call `title` on that
-book, it should return "And Then There Were None".
+"And Then There Were None" as an argument, and then, when we call `title` on that
+book, it *should* return "And Then There Were None".
 
 This means that somewhere between calling `.new` and `.title`, our book is somehow
 getting assigned a title. Where *must* that be happening, then?
 
-In the `initialize` method! It really can't happen anywhere else.
+In the `initialize` method! 
 
 ### Instance Variables
 
 This is where instance variables come into play. Instance variables are preceeded
 with an "@" symbol, and are in scope within an instance of a class. This means that
 any method within an instance has access to any instance variable. This is awesome, because
-within our instances, we don't need to worry about passing variables around. Sweet, huh?
+within our instances, we don't need to worry about passing variables around and sneaking them into methods via arguments.
 
-You can also, sort of, think of instance variables as properties of any particular
+You can also think of instance variables as properties of any particular
 instance of a class. Our book seems to have a `title` property, so let's create
 a `@title` instance variable for it! We'll do that in the initialize method.
 
@@ -222,11 +215,7 @@ Hmm...that looks awfully familiar. It seems like our `title` method is still ret
 But, wait. Didn't we just set an instance variable, or property, in our initialize
 method?
 
-We so did, but we also forgot to, you know, use it in any way. If when we call `.title` on
-a Book instance, we're interested in its title property, maybe we should just return
-that property, or instance variable, in that method?
-
-Let's do that (the difference is in the `title` method):
+We did define the method, but we didn't fill out that method definition with any attributes or behaviors. Our aim is to be able to call `.title` on any instance of the Book class and return the title of that book. So, let's make our `.title` method return the title of a book, which we stored in the instance variable `@title` upon initialization. 
 
 ```ruby
 # book.rb
@@ -260,23 +249,17 @@ Failures:
 
 That's a weird looking "undefined method" error. It says we have no `author=` method.
 
-What? That's gotta be a mistake, right? Nope.
-
 Let's step back for a second. That `title` method we wrote before is what is called
-a "getter". We call it this because, well, it "gets" a property for us. But what
-happens if we want to, say, *set* a property, or an instance variable? This is where
+a "getter". We call it this because it "gets" a property for us. But what
+happens if we want to, say, *set* a property? This is where
 "setters" come into play.
 
-Setters are methods that allow us to set instance variables. It seems weird, but they
-all are named like this: `property=`. This is because Ruby gives us a nice bit of
+Setters are methods that allow us to set instance variables. They are named like this: `property=`. This is because Ruby gives us a nice bit of
 syntactic sugar that allows us to use these methods like:
 
 ```ruby
 instance.property = "something"
 ```
-
-Cool, huh?
-
 So if we want to give our books an author, they need to also have a setter method for
 author. Let's add one to our class. And, since we know all about instance variables,
 let's go ahead and set an instance variable, `@author` within that method:
@@ -313,11 +296,11 @@ Failures:
      # ./spec/01_book_spec.rb:19:in `block (3 levels) in <top (required)>'
 ```
 
-### Setters and Getters Usually (well, sometimes, mostly, kinda) Come in Pairs
+### Setters and Getters Usually Come in Pairs
 
 Now it looks like we're missing an `author` method. Just like with `title`, if we want
 to access a property of our book, we need a getter for that property. For this reason,
-getters and setters tend to come in pairs. This is definitely not a hard and fast rule,
+getters and setters tend to come in pairs. This is not a hard and fast rule,
 but for our purposes now, it's a general rule of thumb we can live by.
 
 Let's go ahead and add the "getter" for `author` to our book:
@@ -358,8 +341,7 @@ Failures:
      # ./spec/01_book_spec.rb:23:in `block (3 levels) in <top (required)>'
 ```
 
-Hey, look! We know how to fix this! It looks like our model (class) needs a setter
-(and probably a getter) for `page_count`. Let's add both of those now:
+We know how to fix this! It looks like our model (another popular way of referring to a class) needs a setter (and probably a getter) for `page_count`. Let's add both of those now:
 
 ```ruby
 # book.rb
@@ -451,7 +433,7 @@ Run Learn now, and we get the following:
 So, this is pretty silly. Books can't turn their own pages, but we'll use the missing
 `turn_page` method to demonstrate that we don't only give our classes properties.
 
-Like I said above, OOP gives us the opportunity to encapsulate both data *and* behavior
+Like I said above, OOP (object oriented programming) gives us the opportunity to encapsulate both data *and* behavior
 within our classes. Here, we want to be able to make our books turn their pages.
 
 How do we give our books a behavior? Well, we give them methods that do stuff! So,
@@ -586,14 +568,13 @@ Failures:
 ```
 
 Ok, so this is new. This syntax, `Book::GENRES` tells us a couple of things. First,
-whenever we see `::`, it indicates "name spacing". In other words, it tells us that
+whenever we see `::`, it indicates **"name spacing"**. In other words, it tells us that
 the thing on the right side of the colons is a thing defined within the context, or
 name space, of the thing on the left side of the colons.
 
-In this case, this is telling us that there is a constant, `GENRES` (we know it's a constant)
-because it's written in all caps) that is defined within our `Book` class.
+In this case, this is telling us that there is a constant, `GENRES` (we know it's a constant because it's written in all caps) that is defined within our `Book` class.
 
-This is what is known as a Class Constant.
+This is what is known as a **Class Constant**.
 
 Class Constants are available to all instances of a particular class. Whereas instance
 variables, i.e. title, author, etc., are individual to each instance of a class, class
@@ -649,7 +630,7 @@ class Book
 end
 ```
 
-This next error, after running the specs again, though is kind of weird:
+This next error, after running the specs again, may look unfamiliar to you:
 
 ```bash
 Failures:
@@ -662,7 +643,7 @@ Failures:
      # ./spec/01_book_spec.rb:48:in `block (3 levels) in <top (required)>'
 ```
 
-I really have no clue how in the world my array would magically contain "Thriller",
+From reading this test output alone, we can't determine how or why our GENRES constant could contain the string "Thriller",
 so let's look at the specific test to figure out what's going on. From lines 41-52 in
 `spec/01_book_spec.rb`:
 
@@ -850,7 +831,8 @@ And there you have it! We created a pretty simple Book class that has a bunch of
 properties, and even turns its own page! Now it's your turn to try some of this on your
 own.
 
-## Shoe Class
+**Top-Tip:** The workflow we implemented here represents a good set of habits to adopt. Balance running and reading test output with diving into the test suite (in the `/spec` directory) to understand more clearly what you are being asked to do. 
+## Your Turn: Shoe Class
 
 Open `spec/02_shoe_spec.rb` and start making the tests pass. Write your code in `shoe.rb`.
 
