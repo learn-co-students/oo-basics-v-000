@@ -697,7 +697,7 @@ nothing else happens before the test checks to see that `Book::GENRES` knows abo
 those genres. What does this mean, then?
 
 It means that something else needs to happen in our `genre=` method. We need to
-somehow update our `GENERS` constant in that method. So, let's do that!
+somehow update our `GENRES` constant in that method. So, let's do that!
 
 ```ruby
 # book.rb
