@@ -23,9 +23,7 @@ In this tutorial, our goal is to create a simple `Book` class. We'll want it to 
 
 ### Set Up
 
-The project directory structure is pretty much set up for us already. We have a `spec`
-folder that contains our tests, and we have a `book.rb` file in the root of the project
-that we'll actually be coding in.
+The project directory structure is pretty much set up for us already. We have a `spec` folder that contains our tests, and we have a `book.rb` file in the root of the project that we'll actually be coding in.
 
 Whenever the tutorial says to 'run the specs', you should type the following into your
 command line:
@@ -59,8 +57,7 @@ This looks kind of crazy, but the phrase `uninitialized constant Book` holds the
 
 ### Defining the Book Class
 
-To create a new class in Ruby, we use the `class` keyword, followed by the name of a class
-starting with a capital letter. Let's define an empty `Book` class in `book.rb`:
+To create a new class in Ruby, we use the `class` keyword, followed by the name of a class starting with a capital letter. Let's define an empty `Book` class in `book.rb`:
 
 ```ruby
 # book.rb
@@ -82,27 +79,21 @@ Not too hard, right? Let's run those tests again and see what happens:
      # ./spec/01_book_spec.rb:6:in `block (3 levels) in <top (required)>'
 ```
 
-Hmm...an argument error? That's weird. In the test it looks like we're trying to initialize
-a new book (create a new book) using the following line of code:
+Hmm...an argument error? That's weird. In the test it looks like we're trying to initialize a new book (create a new book) using the following line of code:
 
 ```ruby
 Book.new("And Then There Were None")
 ```
 
-Now, I have no clue what "And Then There Were None" is in the context of our Book class,
-but what this is telling us is that somehow our Book needs to accept an argument on initialization.
+Now, I have no clue what "And Then There Were None" is in the context of our Book class, but what this is telling us is that somehow our Book needs to accept an argument on initialization.
 
-I'm going to go out on a limb and guess that "And Then There Were None" is a title, so let's
-agree to call that argument `title`.
+I'm going to go out on a limb and guess that "And Then There Were None" is a title, so let's agree to call that argument `title`.
 
 How exactly do we pass an argument in on initialization, though? Enter the `initialize` method!
 
 ### Initialize
 
-The `initialize` method is what is known as a "hook" or a "callback". In other words, it
-is a method that gets triggered automatically when something else happens. In the case
-of `initialize`, it gets triggered when we call `.new` on a class. It also happens
-to be the method that we can pass arguments to when initializing a new instance of a class.
+The `initialize` method is what is known as a "hook" or a "callback". In other words, it is a method that gets triggered automatically when something else happens. In the case of `initialize`, it gets triggered when we call `.new` on a class. It also happens to be the method that we can pass arguments to when initializing a new instance of a class.
 
 Let's add an initialize method to our book class, like this:
 
@@ -162,25 +153,17 @@ And if we run the specs again, we see this output:
      # ./spec/01_book_spec.rb:14:in `block (3 levels) in <top (required)>'
 ```
 
-So, it seems like, if I'm reading the test correctly, we are initializing a book with
-"And Then There Were None" as an argument, and then, when we call `title` on that
-book, it *should* return "And Then There Were None".
+So, it seems like, if I'm reading the test correctly, we are initializing a book with "And Then There Were None" as an argument, and then, when we call `title` on that book, it *should* return "And Then There Were None".
 
-This means that somewhere between calling `.new` and `.title`, our book is somehow
-getting assigned a title. Where *must* that be happening, then?
+This means that somewhere between calling `.new` and `.title`, our book is somehow getting assigned a title. Where *must* that be happening, then?
 
 In the `initialize` method! 
 
 ### Instance Variables
 
-This is where instance variables come into play. Instance variables are preceeded
-with an "@" symbol, and are in scope within an instance of a class. This means that
-any method within an instance has access to any instance variable. This is awesome, because
-within our instances, we don't need to worry about passing variables around and sneaking them into methods via arguments.
+This is where instance variables come into play. Instance variables are preceeded with an "@" symbol, and are in scope within an instance of a class. This means that any method within an instance has access to any instance variable. This is awesome, because within our instances, we don't need to worry about passing variables around and sneaking them into methods via arguments.
 
-You can also think of instance variables as properties of any particular
-instance of a class. Our book seems to have a `title` property, so let's create
-a `@title` instance variable for it! We'll do that in the initialize method.
+You can also think of instance variables as properties of any particular instance of a class. Our book seems to have a `title` property, so let's create a `@title` instance variable for it! We'll do that in the initialize method.
 
 ```ruby
 # book.rb
@@ -212,8 +195,7 @@ Easy as pie. Run those specs again and let's see what happens:
 
 Hmm...that looks awfully familiar. It seems like our `title` method is still returning `nil`.
 
-But, wait. Didn't we just set an instance variable, or property, in our initialize
-method?
+But, wait. Didn't we just set an instance variable, or property, in our initialize method?
 
 We did define the method, but we didn't fill out that method definition with any attributes or behaviors. Our aim is to be able to call `.title` on any instance of the Book class and return the title of that book. So, let's make our `.title` method return the title of a book, which we stored in the instance variable `@title` upon initialization. 
 
@@ -249,20 +231,15 @@ Failures:
 
 That's a weird looking "undefined method" error. It says we have no `author=` method.
 
-Let's step back for a second. That `title` method we wrote before is what is called
-a "getter". We call it this because it "gets" a property for us. But what
-happens if we want to, say, *set* a property? This is where
+Let's step back for a second. That `title` method we wrote before is what is called a "getter". We call it this because it "gets" a property for us. But what happens if we want to, say, *set* a property? This is where
 "setters" come into play.
 
-Setters are methods that allow us to set instance variables. They are named like this: `property=`. This is because Ruby gives us a nice bit of
-syntactic sugar that allows us to use these methods like:
+Setters are methods that allow us to set instance variables. They are named like this: `property=`. This is because Ruby gives us a nice bit of syntactic sugar that allows us to use these methods like:
 
 ```ruby
 instance.property = "something"
 ```
-So if we want to give our books an author, they need to also have a setter method for
-author. Let's add one to our class. And, since we know all about instance variables,
-let's go ahead and set an instance variable, `@author` within that method:
+So if we want to give our books an author, they need to also have a setter method for author. Let's add one to our class. And, since we know all about instance variables, let's go ahead and set an instance variable, `@author` within that method:
 
 ```ruby
 # book.rb
@@ -298,10 +275,7 @@ Failures:
 
 ### Setters and Getters Usually Come in Pairs
 
-Now it looks like we're missing an `author` method. Just like with `title`, if we want
-to access a property of our book, we need a getter for that property. For this reason,
-getters and setters tend to come in pairs. This is not a hard and fast rule,
-but for our purposes now, it's a general rule of thumb we can live by.
+Now it looks like we're missing an `author` method. Just like with `title`, if we want to access a property of our book, we need a getter for that property. For this reason, getters and setters tend to come in pairs. This is not a hard and fast rule, but for our purposes now, it's a general rule of thumb we can live by.
 
 Let's go ahead and add the "getter" for `author` to our book:
 
@@ -375,8 +349,7 @@ class Book
 end
 ```
 
-Another run of the specs gives us a very similar error for `genre=`. Let's also add
-a setter and a getter for that property:
+Another run of the specs gives us a very similar error for `genre=`. Let's also add a setter and a getter for that property:
 
 ```ruby
 # book.rb
@@ -430,14 +403,11 @@ Run Learn now, and we get the following:
 
 ### Giving Our Classes Behavior
 
-So, this is pretty silly. Books can't turn their own pages, but we'll use the missing
-`turn_page` method to demonstrate that we don't only give our classes properties.
+So, this is pretty silly. Books can't turn their own pages, but we'll use the missing `turn_page` method to demonstrate that we don't only give our classes properties.
 
-Like I said above, OOP (object oriented programming) gives us the opportunity to encapsulate both data *and* behavior
-within our classes. Here, we want to be able to make our books turn their pages.
+Like I said above, OOP (object oriented programming) gives us the opportunity to encapsulate both data *and* behavior within our classes. Here, we want to be able to make our books turn their pages.
 
-How do we give our books a behavior? Well, we give them methods that do stuff! So,
-let's give our book a `turn_page` method:
+How do we give our books a behavior? Well, we give them methods that do stuff! So, let's give our book a `turn_page` method:
 
 ```ruby
 # book.rb
@@ -576,13 +546,9 @@ In this case, this is telling us that there is a constant, `GENRES` (we know it'
 
 This is what is known as a **Class Constant**.
 
-Class Constants are available to all instances of a particular class. Whereas instance
-variables, i.e. title, author, etc., are individual to each instance of a class, class
-constants are shared among **all** instances. They all have access to the same data,
-and if that data should change for some reason, all instances will know about that change.
+Class Constants are available to all instances of a particular class. Whereas instance variables, i.e. title, author, etc., are individual to each instance of a class, class constants are shared among **all** instances. They all have access to the same data, and if that data should change for some reason, all instances will know about that change.
 
-Let's go ahead and define this constant. Since it's plural, I'm going to guess that
-it should be an array, so I'll start by defining it as an empty array:
+Let's go ahead and define this constant. Since it's plural, I'm going to guess that it should be an array, so I'll start by defining it as an empty array:
 
 ```ruby
 # book.rb
@@ -643,9 +609,7 @@ Failures:
      # ./spec/01_book_spec.rb:48:in `block (3 levels) in <top (required)>'
 ```
 
-From reading this test output alone, we can't determine how or why our GENRES constant could contain the string "Thriller",
-so let's look at the specific test to figure out what's going on. From lines 41-52 in
-`spec/01_book_spec.rb`:
+From reading this test output alone, we can't determine how or why our GENRES constant could contain the string "Thriller", so let's look at the specific test to figure out what's going on. From lines 41-52 in `spec/01_book_spec.rb`:
 
 ```ruby
 describe 'GENRES' do
@@ -669,16 +633,11 @@ So, it looks like what's going on is this:
 2. The test is assigning each of those books a genre.
 3. The test is expecting our GENRES class constant to keep track of those genres.
 
-Ok, so let's think about this for a second. Where in that sequence of events can
-`GENRES` be updated? Well, it can't be in step one. None of the books starts out
-having a genre. Maybe it happens in step two, but I'm not sure.
+Ok, so let's think about this for a second. Where in that sequence of events can `GENRES` be updated? Well, it can't be in step one. None of the books starts out having a genre. Maybe it happens in step two, but I'm not sure.
 
-No, wait...it *has* to happen in step two. After the books are assigned their genres,
-nothing else happens before the test checks to see that `Book::GENRES` knows about
-those genres. What does this mean, then?
+No, wait...it *has* to happen in step two. After the books are assigned their genres, nothing else happens before the test checks to see that `Book::GENRES` knows about those genres. What does this mean, then?
 
-It means that something else needs to happen in our `genre=` method. We need to
-somehow update our `GENERS` constant in that method. So, let's do that!
+It means that something else needs to happen in our `genre=` method. We need to somehow update our `GENERS` constant in that method. So, let's do that!
 
 ```ruby
 # book.rb
@@ -731,18 +690,15 @@ Run the tests, and, boom! All the tests pass!
 
 ### Final Steps
 
-So, yay! We've passed the tests, but our simple class is looking kind of, umm, long,
-no?
+So, yay! We've passed the tests, but our simple class is looking kind of, umm, long, no?
 
-We seem to have a bunch of setters and getters that look really, really similar aside
-from their name. There's got to be a better way.
+We seem to have a bunch of setters and getters that look really, really similar aside from their name. There's got to be a better way.
 
 And there is!
 
 #### Attribute Accessors and Attribute Readers
 
-This is where Attribute Accessors and Attribute Readers come into play. (There are also
-Attribute Writers, but we don't need them for this tutorial.)
+This is where Attribute Accessors and Attribute Readers come into play. (There are also Attribute Writers, but we don't need them for this tutorial.)
 
 This is a really simplistic explanation, but here's what they do:
 
@@ -755,9 +711,7 @@ This is a really simplistic explanation, but here's what they do:
   * In other words, if we have an attribute accessor (`attr_accessor`) for `:name`, Ruby
   will create both `name` and `name=` methods for us.
 
-We can really, really simplify our code now! Since neither the `author` nor `page_count`
-setters or getters do anything special, and just set properties, we can turn those into
-`attr_accessors`:
+We can really, really simplify our code now! Since neither the `author` nor `page_count` setters or getters do anything special, and just set properties, we can turn those into `attr_accessors`:
 
 ```ruby
 # book.rb
@@ -791,9 +745,7 @@ class Book
 end
 ```
 
-Our `title` and `genre` readers (or getters) are also super basic, so let's add an
-`attr_reader` for both of those. Remember, this will give us those getter methods
-for free!
+Our `title` and `genre` readers (or getters) are also super basic, so let's add an `attr_reader` for both of those. Remember, this will give us those getter methods for free!
 
 ```ruby
 # book.rb
@@ -820,16 +772,11 @@ class Book
 end
 ```
 
-Look how much more manageable our class looks now! You may be tempted to turn `genre`
-into an `attr_accessor`, but keep in mind that the setters and getters that we get
-are super basic. For our purposes here, the `genre=` setter needs to do a bit more magic,
-so we still need to write that method by hand.
+Look how much more manageable our class looks now! You may be tempted to turn `genre` into an `attr_accessor`, but keep in mind that the setters and getters that we get are super basic. For our purposes here, the `genre=` setter needs to do a bit more magic, so we still need to write that method by hand.
 
 ### Wrap Up
 
-And there you have it! We created a pretty simple Book class that has a bunch of
-properties, and even turns its own page! Now it's your turn to try some of this on your
-own.
+And there you have it! We created a pretty simple Book class that has a bunch of properties, and even turns its own page! Now it's your turn to try some of this on your own.
 
 **Top-Tip:** The workflow we implemented here represents a good set of habits to adopt. Balance running and reading test output with diving into the test suite (in the `/spec` directory) to understand more clearly what you are being asked to do. 
 ## Your Turn: Shoe Class
