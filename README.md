@@ -1,8 +1,4 @@
----
-  tags: oop, tutorial, basics
-  languages: ruby
-  resources: 2
----
+
 
 # Object Orientation Basics
 
@@ -15,7 +11,7 @@ a similar object oriented problem on your own.
 ## Instructions
 
 1. Read through the tutorial, following along as you go.
-2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only those tests by typing `rspec spec/02_shoe_spec.rb` on your command line.
+2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only those tests by typing `learn spec/02_shoe_spec.rb` on your command line.
 
 ## Tutorial
 
@@ -39,7 +35,7 @@ Whenever the tutorial says to 'run the specs', you should type the following int
 command line:
 
 ```bash
-rspec spec/01_book_spec.rb
+learn spec/01_book_spec.rb
 ```
 
 This will run only the tests that we are interested in completing for this tutorial.
@@ -440,7 +436,7 @@ class Book
 end
 ```
 
-Run RSpec now, and we get the following:
+Run Learn now, and we get the following:
 
 ```bash
 1) Book #turn_page can turn the page
@@ -520,10 +516,10 @@ something to the screen. So, to make the test pass, let's add a `puts` statement
 to our `turn_page` method:
 
 ```ruby
+
 # book.rb
 
 class Book
-
   def initialize(title)
     @title = title
   end
@@ -701,7 +697,7 @@ nothing else happens before the test checks to see that `Book::GENRES` knows abo
 those genres. What does this mean, then?
 
 It means that something else needs to happen in our `genre=` method. We need to
-somehow update our `GENERS` constant in that method. So, let's do that!
+somehow update our `GENRES` constant in that method. So, let's do that!
 
 ```ruby
 # book.rb
@@ -858,10 +854,7 @@ own.
 
 Open `spec/02_shoe_spec.rb` and start making the tests pass. Write your code in `shoe.rb`.
 
-To run the specs, type `rspec spec/02_shoe_spec.rb` on your command line.
+To run the specs, type `learn spec/02_shoe_spec.rb` on your command line.
 
 Happy coding!
 
-## Resources
-* [Practical Object-Oriented Design in Ruby](http://books.flatironschool.com/books/102) - [Chapter 1: Object-Oriented Design](http://books.flatironschool.com/books/102), page 26
-* [Practical Object-Oriented Design in Ruby](http://books.flatironschool.com/books/102) - [Chapter 2: Designing Classes with a Single Responsibility 15](http://books.flatironschool.com/books/102), page 40
