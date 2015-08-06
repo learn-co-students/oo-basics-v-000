@@ -637,7 +637,8 @@ Ok, so let's think about this for a second. Where in that sequence of events can
 
 No, wait...it *has* to happen in step two. After the books are assigned their genres, nothing else happens before the test checks to see that `Book::GENRES` knows about those genres. What does this mean, then?
 
-It means that something else needs to happen in our `genre=` method. We need to somehow update our `GENERS` constant in that method. So, let's do that!
+It means that something else needs to happen in our `genre=` method. We need to
+somehow update our `GENRES` constant in that method. So, let's do that!
 
 ```ruby
 # book.rb
