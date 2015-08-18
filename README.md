@@ -231,13 +231,13 @@ Failures:
 
 That's a weird looking "undefined method" error. It says we have no `author=` method.
 
-Let's step back for a second. That `title` method we wrote before is what is called a "getter". We call it this because it "gets" a property for us. But what happens if we want to, say, *set* a property? This is where
+Let's step back for a second. That `title` method we wrote before is what is called a "getter". We call it this because it "gets" an instance variable for us. But what happens if we want to, say, *set* an attribute (i.e. instance variable)? This is where
 "setters" come into play.
 
-Setters are methods that allow us to set instance variables. They are named like this: `property=`. This is because Ruby gives us a nice bit of syntactic sugar that allows us to use these methods like:
+Setters are methods that allow us to set instance variables. They are named like this: `attribute=`. This is because Ruby gives us a nice bit of syntactic sugar that allows us to use these methods like:
 
 ```ruby
-instance.property = "something"
+instance.attribute = "something"
 ```
 So if we want to give our books an author, they need to also have a setter method for author. Let's add one to our class. And, since we know all about instance variables, let's go ahead and set an instance variable, `@author` within that method:
 
