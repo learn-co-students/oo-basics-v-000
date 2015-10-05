@@ -502,7 +502,7 @@ end
 
 A quick run of the tests gives us this:
 
-``bash
+```bash
 1) Book #turn_page can turn the page
      Failure/Error: expect($stdout).to receive(:puts).with("Flipping the page...wow, you read fast!")
        (#<IO:0x0000010106ac00>).puts("Flipping the page...wow, you read fast!")
