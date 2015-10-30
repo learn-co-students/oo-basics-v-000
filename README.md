@@ -567,185 +567,6 @@ book.turn_page
 # => "Flipping the page...wow, you read fast!"
 ```
 
-Let's run the tests again.
-
-### Class Constants
-
-When we run the tests, we get an error that looks something like this:
-
-```bash
-Failures:
-
-  1) Book GENRES keeps track of all genres
-     Failure/Error: expect(Book::GENRES).to include(genre)
-     NameError:
-       uninitialized constant Book::GENRES
-     # ./spec/01_book_spec.rb:49:in `block (4 levels) in <top (required)>'
-     # ./spec/01_book_spec.rb:48:in `each'
-     # ./spec/01_book_spec.rb:48:in `block (3 levels) in <top (required)>'
-```
-
-Ok, so this is new. This syntax, `Book::GENRES` tells us a couple of things. First,
-whenever we see `::`, it indicates "name spacing". In other words, it tells us that
-the thing on the right side of the colons is a thing defined within the context, or
-name space, of the thing on the left side of the colons.
-
-In this case, this is telling us that there is a constant, `GENRES` (we know it's a constant)
-because it's written in all caps) that is defined within our `Book` class.
-
-This is what is known as a Class Constant.
-
-Class Constants are available to all instances of a particular class. Whereas instance
-variables, i.e. title, author, etc., are individual to each instance of a class, class
-constants are shared among **all** instances. They all have access to the same data,
-and if that data should change for some reason, all instances will know about that change.
-
-Let's go ahead and define this constant. Since it's plural, I'm going to guess that
-it should be an array, so I'll start by defining it as an empty array:
-
-```ruby
-# book.rb
-
-class Book
-
-  GENRES = []
-
-  def initialize(title)
-    @title = title
-  end
-
-  def title
-    @title
-  end
-
-  def author=(author)
-    @author = author
-  end
-
-  def author
-    @author
-  end
-
-  def page_count=(num)
-    @page_count = num
-  end
-
-  def page_count
-    @page_count
-  end
-
-  def genre=(genre)
-    @genre = genre
-  end
-
-  def genre
-    @genre
-  end
-
-  def turn_page
-    puts "Flipping the page...wow, you read fast!"
-  end
-
-end
-```
-
-This next error, after running the specs again, though is kind of weird:
-
-```bash
-Failures:
-
-  1) Book GENRES keeps track of all genres
-     Failure/Error: expect(Book::GENRES).to include(genre)
-       expected [] to include "Thriller"
-     # ./spec/01_book_spec.rb:49:in `block (4 levels) in <top (required)>'
-     # ./spec/01_book_spec.rb:48:in `each'
-     # ./spec/01_book_spec.rb:48:in `block (3 levels) in <top (required)>'
-```
-
-I really have no clue how in the world my array would magically contain "Thriller",
-so let's look at the specific test to figure out what's going on. From lines 41-52 in
-`spec/01_book_spec.rb`:
-
-```ruby
-describe 'GENRES' do
-  it 'keeps track of all genres' do
-    genres = ["Thriller", "Science Fiction", "Romance"]
-    genres.each_with_index do |genre, i|
-      book = Book.new("Book_#{i}")
-      book.genre = genre
-    end
-
-    genres.each do |genre|
-      expect(Book::GENRES).to include(genre)
-    end
-  end
-end
-```
-
-So, it looks like what's going on is this:
-
-1. The test is creating a bunch of books.
-2. The test is assigning each of those books a genre.
-3. The test is expecting our GENRES class constant to keep track of those genres.
-
-Ok, so let's think about this for a second. Where in that sequence of events can
-`GENRES` be updated? Well, it can't be in step one. None of the books starts out
-having a genre. Maybe it happens in step two, but I'm not sure.
-
-No, wait...it *has* to happen in step two. After the books are assigned their genres,
-nothing else happens before the test checks to see that `Book::GENRES` knows about
-those genres. What does this mean, then?
-
-It means that something else needs to happen in our `genre=` method. We need to
-somehow update our `GENRES` constant in that method. So, let's do that!
-
-```ruby
-# book.rb
-
-class Book
-
-  GENRES = []
-
-  def initialize(title)
-    @title = title
-  end
-
-  def title
-    @title
-  end
-
-  def author=(author)
-    @author = author
-  end
-
-  def author
-    @author
-  end
-
-  def page_count=(num)
-    @page_count = num
-  end
-
-  def page_count
-    @page_count
-  end
-
-  def genre=(genre)
-    @genre = genre
-    GENRES << genre
-  end
-
-  def genre
-    @genre
-  end
-
-  def turn_page
-    puts "Flipping the page...wow, you read fast!"
-  end
-
-end
-```
-
 Run the tests, and, boom! All the tests pass!
 
 ### Final Steps
@@ -774,17 +595,14 @@ This is a really simplistic explanation, but here's what they do:
   * In other words, if we have an attribute accessor (`attr_accessor`) for `:name`, Ruby
   will create both `name` and `name=` methods for us.
 
-We can really, really simplify our code now! Since neither the `author` nor `page_count`
-setters or getters do anything special, and just set properties, we can turn those into
-`attr_accessors`:
+We can really, really simplify our code now! Since the `author`, `page_count`, and `genre`
+setters or getters do not do anything special (they just set properties), we can turn those into `attr_accessors`:
 
 ```ruby
 # book.rb
 
 class Book
-  attr_accessor :author, :page_count
-
-  GENRES = []
+  attr_accessor :author, :page_count, genre
 
   def initialize(title)
     @title = title
@@ -794,15 +612,6 @@ class Book
     @title
   end
 
-  def genre=(genre)
-    @genre = genre
-    GENRES << genre
-  end
-
-  def genre
-    @genre
-  end
-
   def turn_page
     puts "Flipping the page...wow, you read fast!"
   end
@@ -810,16 +619,16 @@ class Book
 end
 ```
 
-Our `title` and `genre` readers (or getters) are also super basic, so let's add an
-`attr_reader` for both of those. Remember, this will give us those getter methods
+Our `title` reader (or getter) is also super basic, so let's add an
+`attr_reader` for it. Remember, this will give us a getter method
 for free!
 
 ```ruby
 # book.rb
 
 class Book
-  attr_accessor :author, :page_count
-  attr_reader :title, :genre
+  attr_accessor :author, :page_count, :genre
+  attr_reader :title
 
   GENRES = []
 
@@ -827,22 +636,12 @@ class Book
     @title = title
   end
 
-  def genre=(genre)
-    @genre = genre
-    GENRES << genre
-  end
-
   def turn_page
     puts "Flipping the page...wow, you read fast!"
   end
 
 end
 ```
-
-Look how much more manageable our class looks now! You may be tempted to turn `genre`
-into an `attr_accessor`, but keep in mind that the setters and getters that we get
-are super basic. For our purposes here, the `genre=` setter needs to do a bit more magic,
-so we still need to write that method by hand.
 
 ### Wrap Up
 
@@ -857,4 +656,3 @@ Open `spec/02_shoe_spec.rb` and start making the tests pass. Write your code in 
 To run the specs, type `learn spec/02_shoe_spec.rb` on your command line.
 
 Happy coding!
-
