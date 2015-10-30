@@ -53,7 +53,7 @@ Failures:
 
 This looks kind of crazy, but the phrase `uninitialized constant Book` holds the answer: we need to define our Book class!
 
-**Top Tip:** You can run your tests, up until the first failure, using the `rspec --fail-fast` command. This delivers some testing output in more manageable chunks. 
+**Top Tip:** You can run your tests, up until the first failure, using the `learn --fail-fast` command. This delivers some testing output in more manageable chunks. 
 
 ### Defining the Book Class
 
