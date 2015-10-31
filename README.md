@@ -602,7 +602,7 @@ setters or getters do not do anything special (they just set properties), we can
 # book.rb
 
 class Book
-  attr_accessor :author, :page_count, genre
+  attr_accessor :author, :page_count, :genre
 
   def initialize(title)
     @title = title
@@ -629,8 +629,6 @@ for free!
 class Book
   attr_accessor :author, :page_count, :genre
   attr_reader :title
-
-  GENRES = []
 
   def initialize(title)
     @title = title
