@@ -5,7 +5,7 @@ describe 'Shoe' do
     end
   end
 
-  context 'properties' do
+  describe 'properties' do
     let(:shoe) { Shoe.new("Nike") }
 
     it 'has a brand' do

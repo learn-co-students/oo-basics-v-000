@@ -5,7 +5,7 @@ describe 'Book' do
     end
   end
 
-  context 'properties' do
+  describe 'properties' do
     let(:book) { Book.new("And Then There Were None") }
 
     it 'has a title' do
