@@ -9,7 +9,7 @@ This lab will walk you, step by step, through the basics of programming a simple
 ## Instructions
 
 1. Read through the tutorial, following along as you go.
-2. Once you've finished, make the tests in `spec/02_shoe_spec.rb` pass. Run only those tests by typing `learn spec/02_shoe_spec.rb` on your command line.
+2. Once you've finished, make the tests in `spec/01_book_spec.rb` pass. Run only those tests by typing `learn spec/01_book_spec.rb` on your command line.
 
 ## Tutorial
 
@@ -102,7 +102,7 @@ class Book
 end
 ```
 
-We'll figure out what we need to do with `title` in just a minute, but for know, all we should remember is that the `initialize` method is a place that we'll probably be doing some setup in. Cool?
+We'll figure out what we need to do with `title` in just a minute, but for now, all we should remember is that the `initialize` method is a place that we'll probably be doing some setup in. Cool?
 
 Let's run those tests again:
 
