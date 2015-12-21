@@ -102,7 +102,7 @@ class Book
 end
 ```
 
-We'll figure out what we need to do with `title` in just a minute, but for know, all we should remember is that the `initialize` method is a place that we'll probably be doing some setup in. Cool?
+We'll figure out what we need to do with `title` in just a minute, but for now, all we should remember is that the `initialize` method is a place that we'll probably be doing some setup in. Cool?
 
 Let's run those tests again:
 
