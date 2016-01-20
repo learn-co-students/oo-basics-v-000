@@ -19,7 +19,7 @@ In this tutorial, our goal is to create a simple `Book` class. We'll want it to 
 
 ### Set Up
 
-The project directory structure is pretty much set up for us already. We have a `spec` folder that contains our tests, and we have a `book.rb` file in the root of the project that we'll actually be coding in.
+The project directory structure is pretty much set up for us already. We have a `spec` folder that contains our tests, and we have a `book.rb` file in the 'lib' directory that we'll actually be coding in.
 
 Whenever the tutorial says to 'run the specs', you should type the following into your command line:
 
@@ -596,3 +596,5 @@ Open `spec/02_shoe_spec.rb` and start making the tests pass. Write your code in 
 To run the specs, type `learn spec/02_shoe_spec.rb` on your command line.
 
 Happy coding!
+
+<a href='https://learn.co/lessons/oo-basics' data-visibility='hidden'>View this lesson on Learn.co</a>
