@@ -597,4 +597,4 @@ To run the specs, type `learn spec/02_shoe_spec.rb` on your command line.
 
 Happy coding!
 
-<a href='https://learn.co/lessons/oo-basics' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/oo-basics' title='Object Orientation Basics'>Object Orientation Basics</a> on Learn.co and start learning to code for free.</p>
