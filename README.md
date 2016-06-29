@@ -15,6 +15,14 @@ This lab will walk you, step by step, through the basics of programming a simple
 
 Object oriented programming, or OOP, is an extremely useful programming paradigm in which we can organize our code according to how real-world objects might interact with one another. We can wrap properties/data and behavior up in classes, and then create instances, or individual "members", of those classes that can interact with one another.
 
+One common misperception about OOP is that everything MUST model the _real
+world_. If we limit our objects to things in the real world, the
+limitations will start jumping out at us.
+
+Imagine a phone call between 2 people. Sure, the PEOPLE are real, but what about the phone call? If we think
+about the phone call through OOP, we can model it too! A phone call has a
+`caller` and a `receiver`, a `duration`, and even a `cost_per_minute`. In the _real world_, it's not a real thing, but in OOP IT IS!
+
 In this tutorial, our goal is to create a simple `Book` class. We'll want it to have properties like a title, an author, a page count, etc. We'd also like the class to somehow be able to keep track of all of the genres of all of the Books we create. Finally, we'll give our books the total non-sensical ability to turn their own pages.
 
 ### Set Up
