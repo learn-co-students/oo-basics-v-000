@@ -1,4 +1,5 @@
 # Make your shoe class here!
+require 'pry'
 class Shoe
 def initialize(brand)
   @brand = brand
@@ -42,10 +43,12 @@ end
 
 def cobble
   puts "Your shoe is as good as new!"
-end
-
-def cobble=(condition)
-  @condition = condition
+  binding.pry
+  if @condition == "old"
+    binding.pry
+    @condition = "new"
+    binding.pry
+  end
 end
 
 end
