@@ -1,5 +1,6 @@
 class Shoe
   #becuase we are getting and setting info on the floowing properties we use attr_accessor.
+  #this creates instance variables for these properties example :@color, @size
   attr_accessor :color, :size, :material, :condition
   attr_reader :brand
 
