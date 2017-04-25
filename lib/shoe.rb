@@ -9,7 +9,8 @@ class Shoe
     @brand = brand
   end
 
-  #define method cobble and puts show has been repaid
+  #define method cobble and puts show has been repaired
+  #set condition to new
 
   def cobble
     puts "Your shoe is as good as new!"
