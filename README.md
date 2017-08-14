@@ -199,7 +199,7 @@ Hmm...that looks awfully familiar. It seems like our `title` method is still ret
 
 But, wait. Didn't we just set an instance variable, or property, in our initialize method?
 
-We so did, but we also forgot to, you know, use it in any way. If when we call `.title` on a Book instance, we're interested in its title property, maybe we should just return that property, or instance variable, in that method?
+We so did, but we also forgot to, you know, use it in any way. If, when we call `.title` on a Book instance, we're interested in its title property, maybe we should just return that property, or instance variable, in that method?
 
 Let's do that (the difference is in the `title` method):
 
@@ -606,3 +606,5 @@ To run the specs, type `learn spec/02_shoe_spec.rb` on your command line.
 Happy coding!
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/oo-basics' title='Object Orientation Basics'>Object Orientation Basics</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/oo-basics'>OO Basics</a> on Learn.co and start learning to code for free.</p>
