@@ -11,7 +11,4 @@ class Shoe
     puts "Your shoe is as good as new!"
     @condition = "new"
   end
-
 end
-
-shoe = Shoe.new("new")
