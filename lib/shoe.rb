@@ -9,10 +9,7 @@ class Shoe
   def cobble
 
     puts "Your shoe is as good as new!"
-    # condition = "new"
+
     self.condition = "new"
   end
-  # shoe = Shoe.new("some brand")
-  # shoe.condition = "new"
-# condition = "new"
 end
