@@ -15,5 +15,13 @@ class Book
   def author 
     @author
   end 
+  # setter method
+  def page_count=(total_pages)
+    @page_count = total_pages
+  end
+  # getter method
+  def page_count
+    @page_count
+  end
 end 
 
