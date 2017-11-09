@@ -14,5 +14,6 @@ class Shoe
   # this method also changes a shoes condition - needs access to the condition 
   def cobble
     puts "Your shoe is as good as new!"
+    shoe.condition = "new"
   end
 end 
