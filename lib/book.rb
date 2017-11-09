@@ -2,13 +2,16 @@ require 'pry'
 
 class Book 
   attr_accessor :author, :page_count, :genre
-  
+  attr_reader :title
   def initialize(title)
     @title = title
   end
+=begin
+**This could also be DRY by replacing with attr_reader method above **
   def title 
     @title
   end 
+=end
 =begin
 
 **The code below is an example of non-DRY code, we replaced this code with the attribute accessor, which automatically sets up setter and getter methods for each method **
