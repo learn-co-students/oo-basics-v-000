@@ -2,11 +2,15 @@ require 'pry'
 
 class Book 
   def initialize(title)
+    @title = title
   end
+  def title 
+    @title
+  end 
   # setter method here 
+  def author=(author_name)
   
-  # getter method here 
-    
+  end
+  # getter method here    
 end 
 
-book = Book.new 
