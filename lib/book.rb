@@ -9,8 +9,11 @@ class Book
   end 
   # setter method here 
   def author=(author_name)
-  
+    @author = author_name
   end
-  # getter method here    
+  # getter method here 
+  def author 
+    @author
+  end 
 end 
 
