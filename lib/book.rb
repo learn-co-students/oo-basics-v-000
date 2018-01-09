@@ -1,2 +1,45 @@
 
+class Book
 
+  attr_accessor :author, :page_count, :genre #creates the getter and setter method (name, name=) for all three properties
+  attr_reader :title #creates the #getter or reader method
+  def initialize(title)
+    @title = title
+  end
+
+=begin
+  def title
+    @title
+  end
+
+  def author=(author)
+    @author = author
+  end
+
+  def author
+    @author
+  end
+
+  def page_count=(num)
+    @page_count = num
+  end
+
+  def page_count
+    @page_count
+  end
+
+  def genre=(genre)
+    @genre = genre
+  end
+
+  def genre
+    @genre
+  end
+=end
+  def turn_page
+    puts "Flipping the page...wow, you read fast!"
+  end
+
+
+
+end
