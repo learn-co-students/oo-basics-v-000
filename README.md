@@ -147,10 +147,10 @@ And if we run the specs again, we see this output:
 ```bash
 1) Book properties has a title
      Failure/Error: expect(book.title).to eq("And Then There Were None")
-       
+
        expected: "And Then There Were None"
             got: nil
-       
+
        (compared using ==)
      # ./spec/01_book_spec.rb:14:in `block (3 levels) in <top (required)>'
 ```
@@ -187,10 +187,10 @@ Easy as pie. Run those specs again and let's see what happens:
 ```bash
 1) Book properties has a title
      Failure/Error: expect(book.title).to eq("And Then There Were None")
-       
+
        expected: "And Then There Were None"
             got: nil
-       
+
        (compared using ==)
      # ./spec/01_book_spec.rb:14:in `block (3 levels) in <top (required)>'
 ```
