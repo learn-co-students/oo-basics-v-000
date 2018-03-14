@@ -1,20 +1,20 @@
+require "pry"
 class Shoe
   
   attr_accessor :color, :size, :material, :condition
-  attr_reader :title
+  attr_reader :brand
   
   def initialize(brand)
     @brand = brand
   end
   
-  def turn_page
-    puts "Flipping the page...wow, you read fast!"
+  def cobble
+    @condition = "new"
+    puts "Your shoe is as good as new!"
   end
+
   
 end
 
-book = Book.new("Some Title")
-book.turn_page
 
 
-# Make your shoe class here!
