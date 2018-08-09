@@ -54,7 +54,7 @@ Failures:
      # ./spec/01_book_spec.rb:6:in `block (3 levels) in <top (required)>'
 ```
 
-This looks kind of crazy, but the phrase `uninitialized constant Book` holds the answer: we need to define our Book class!
+This looks kind of overwhelming, but the phrase `uninitialized constant Book` holds the answer: we need to define our Book class!
 
 ### Defining the Book Class
 
