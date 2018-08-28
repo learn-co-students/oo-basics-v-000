@@ -21,8 +21,10 @@ class Shoe
   
   def cobble 
     puts "Your shoe is as good as new!"
-    @condition = "new"
-    # Note: self.condition = "new" works as well
+    #@condition = "new"
+    self.condition = "new" 
+    # Note: both lines of code work, but self.condition = "new" is better.
+    # See this resource for more info: https://www.codementor.io/crismali/avoid-instance-variables-use-getters-and-setters-du107rgbi
   end
   
 end
