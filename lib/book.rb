@@ -7,8 +7,12 @@ class Book
     
     end
     
-    def title 
-      
+    def title   #getter / reader 
+      @title 
     end 
-
+   
+   def author = (author)  #setter/ writer 
+     @author = author 
+    end 
+   
 end 
