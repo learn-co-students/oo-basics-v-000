@@ -13,6 +13,7 @@ end
 def cobble
   puts "Your shoe is as good as new!"
   @condition = "new"
+  #you can use an instance var from the attr accessors
 end
 
 
