@@ -13,3 +13,6 @@ class Shoe
     @condition = "new"
   end
 end 
+
+shoe = Shoe.new("converse")
+puts shoe.brand 
