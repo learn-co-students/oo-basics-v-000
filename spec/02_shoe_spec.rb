@@ -1,13 +1,13 @@
-describe 'Shoe' do
+puts describe 'Shoe' do
   let(:shoe) { Shoe.new("Nike") }
 
-  describe '::new' do
+  puts describe '::new' do
     it 'gets initialized with a brand' do
       expect{Shoe.new("Adidas")}.to_not raise_error
     end
   end
 
-  describe 'properties' do
+  puts describe 'properties' do
     it 'has a brand' do
       # When must the brand be assigned for this to work?
       expect(shoe.brand).to eq("Nike")
@@ -34,7 +34,7 @@ describe 'Shoe' do
     end
   end
 
-  describe '#cobble' do
+  puts describe '#cobble' do
     it 'says that the shoe has been repaired' do
       expect($stdout).to receive(:puts).with("Your shoe is as good as new!")
       shoe.cobble
