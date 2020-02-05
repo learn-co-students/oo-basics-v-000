@@ -1,5 +1,6 @@
-class Book
+# book.rb
 
+class Book
   # Book : :new gets initialized with a title
   def initialize(title) # getter method (gets the property in this case title)
     @title = title
@@ -9,7 +10,7 @@ class Book
     @title
   end
 
-  def author=(author) # setter method allows us to set instance variables
+  def author=(author)
     @author = author
   end
 
