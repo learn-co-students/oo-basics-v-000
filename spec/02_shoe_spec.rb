@@ -41,7 +41,7 @@ describe 'Shoe' do
     end
 
     it 'makes the shoe\'s condition new' do
-      shoe.condition = "old"
+      shoe.condition = "new"
       shoe.cobble
       expect(shoe.condition).to eq("new")
     end
