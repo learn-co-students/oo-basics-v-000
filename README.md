@@ -1,4 +1,4 @@
-
+learn --fail-fast
 
 # Object Orientation Basics
 
