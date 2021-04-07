@@ -1,24 +1,14 @@
-# Make your shoe class here!
-class Book
+class Shoe
+  attr_accessor :color, :size, :material, :condition
+  attr_reader :brand
 
-  def initialize(title)
-    @title = title
+  def initialize(brand)
+    @brand = brand
   end
 
-  def title
-    @title
-  end
-
-  def author=(author)
-    @author = author
-  end
-
-  def author
-    @author
-  end
-
-  def page_count=(num)
-    @page_count = num
+  def cobble
+    @condition = 'new'
+    puts "Your shoe is as good as new!"
   end
 
 end
