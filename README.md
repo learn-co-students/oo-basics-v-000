@@ -1,5 +1,3 @@
-
-
 # Object Orientation Basics
 
 ## Description
