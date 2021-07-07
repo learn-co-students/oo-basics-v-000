@@ -5,7 +5,7 @@ describe 'Shoe' do
     it 'gets initialized with a brand' do
       expect{Shoe.new("Adidas")}.to_not raise_error
     end
-  end
+  endlea
 
   describe 'properties' do
     it 'has a brand' do
